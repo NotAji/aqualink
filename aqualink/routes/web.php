@@ -10,17 +10,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+Route::get('/dashboard', function () {
+    $user = auth::user();
 
-    Route::get('/user/dashboard', function () {
-        return view('user.dashboard');
-    })->name('user.dashboard');
-});
-
-
+    return match ($user->role) {
+        'admin' => redirect('/admin/dashboard'),
+        default => redirect('/user/dashboard'),
+    };
+})->middleware('auth')->name('dashboard');
 
 Route::get('/user/dashboard', function () {
     return view('user.dashboard');
