@@ -14,7 +14,7 @@
         @endif
 </head>
 <body>
-    <header class="display flex justify-evenly gap-96 py-5 bg-slate-800 text-white align-content-center">
+    <header class="display flex justify-evenly gap-96 py-5 bg-slate-800 text-white align-content-center font-semibold">
         <div class="logo">
             <a href="/">AQUALINK</a>
         </div>
@@ -48,6 +48,28 @@
             @endif
         </div>
     </header>
+
+    <main class="max-w-screen">
+        <section class="hero text-white">
+            <div>
+                <strong>AQUALINK</strong>
+                <h3>Your all-in-one platform</h3>
+                <p>effortless fish booking. Whether you're a seafood supplier, restaurant owner, or passionate seafood lover, Aqualink connects you with reliable sources to reserve the freshest catch—quickly, easily, and all in one place.</p>
+            </div>
+            <div class="joinUs ">
+                <a href="">
+                    About Us
+                </a>
+                <a href="{{ route('register') }}">
+                    Join Us
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy 2025 Aqualink. All rights reserved.</p>
+    </footer>
 
 
     @if (Route::has('login'))

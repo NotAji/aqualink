@@ -1,6 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,600;1,14..32,600&display=swap");
+
+body {
+    background-color: #181f2b;
+}
 
 .login {
     border: 1px solid transparent;
@@ -14,6 +20,7 @@
     color: #1e293b;
     background-color: white;
     opacity: 1.5px;
+    font-weight: 600;
 }
 
 .register {
@@ -28,4 +35,85 @@
     color: #1e293b;
     background-color: white;
     opacity: 1.5px;
+    font-weight: 600;
+}
+
+header {
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    min-height: 90.3vh;
+    max-width: 100vw;
+    width: 100%;
+    height: 90.3vh;
+    background-color: #181f2b;
+}
+
+main section {
+    padding: 20px;
+    max-width: 55%;
+    border: 1px solid #181f2b;
+}
+main section strong {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 3.5rem;
+}
+main section h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+main section p {
+    font-family: "Inter", sans-serif;
+}
+.hero {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.joinUs {
+    display: block;
+    width: 100%;
+    padding-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.joinUs a {
+    background-color: #334155;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+}
+
+.joinUs a:hover {
+    transition: ease 0.5s;
+    background-color: white;
+    color: #181f2b;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        max-width: 1200px;
+        width: 768px;
+    }
+    body {
+        background-color: #181f2b;
+    }
+    main {
+        background-color: #181f2b;
+    }
 }
