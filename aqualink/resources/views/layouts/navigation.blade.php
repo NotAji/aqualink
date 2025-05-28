@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <h1 class="text-white pl-5">AQUALINK</h1>
+                        <h1 class="text-white">AQUALINK</h1>
                     </a>
                 </div>
 
