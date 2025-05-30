@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\usersInventory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersInventoryController extends Controller
 {
@@ -11,7 +12,8 @@ class UsersInventoryController extends Controller
     public function index()
     {
         $users = UsersInventory::all();
-        return view("user.dashboard", compact("users"));
+        $username = auth::user()->name;
+        return view("user.dashboard", compact("users", "username"));
     }
 
     public function create()

@@ -116,8 +116,9 @@ footer {
 
 .content-header {
     padding-left: 20px;
-    padding-top: 10px;
-    padding-bottom: 5px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 1.1rem;
     color: white;
     font-family: "Poppins", sans-serif;
     border-bottom: 1px solid #525c6d;
