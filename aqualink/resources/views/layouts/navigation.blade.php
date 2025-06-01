@@ -12,18 +12,23 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('user.myfish')" :active="request()->routeIs('myfish')">
+                    <x-nav-link :href="route('user.myfish')">
                         {{ __('My Fish') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('user.mybooking')" :active="request()->routeIs('mybooking')">
+                    <x-nav-link :href="route('user.mybooking')">
                         {{ __('My Bookings') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('user.browse')">
+                        {{ __('Browse Fish') }}
                     </x-nav-link>
                 </div>
             </div>

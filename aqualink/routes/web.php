@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UsersInventoryController;
 use App\Http\Controllers\FishController;
 use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +36,7 @@ Route::middleware('auth')->group(function () {
 
 //Fish Controllers
 Route::middleware(['auth'])->group(function () {
+    Route::get('/user/myfish', [FishController::class, 'index'])->name('user.myfish');
     Route::get('/user/dashboard', [FishController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/user/create', [FishController::class, 'create'])->name('user.create');
     Route::post('user/create', [FishController::class, 'store'])->name('user.store');
@@ -45,12 +45,12 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/user/myfish{id}', [FishController::class, 'destroy'])->name('user.destroy');
 });
 
+//Booking Controllers
 Route::middleware(['auth'])->group(function () {
-    Route::get('/user/myfish', [FishController::class, 'index'])->name('user.myfish');
-});
-
-Route::middleware(['auth'])->group(function () {
+    Route::get('user/browse', [BookingController::class, 'browse'])->name('user.browse');
     Route::get('/user/mybooking', [BookingController::class, 'index'])->name('user.mybooking');
+    Route::get('/user/{id}/bookFish', [BookingController::class, 'bookFish'])->name('user.bookFish');
+    Route::post('/user/{id}/storeBooking', [BookingController::class, 'storeBooking'])->name('user.storeBooking');
 });
 
 require __DIR__ . '/auth.php';

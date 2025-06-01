@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('users_id')->constrained()->cascadeOnDelete();
             $table->foreignId('fish_id')->constrained()->cascadeOnDelete();
+            $table->string('name');
+            $table->integer('price');
             $table->integer('quantity');
             $table->enum('status', ['pending', 'approved', 'declined'])->default(('pending'));
             $table->text('notes')->nullable();
