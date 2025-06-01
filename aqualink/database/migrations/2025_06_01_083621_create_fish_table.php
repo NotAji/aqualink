@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_inventory', function (Blueprint $table) {
+        Schema::create('fish', function (Blueprint $table) {
             $table->id();
+            $table->foreignID('users_id')->constrained()->cascadeOnDelete();
             $table->string('name');
-            $table->float('price');
+            $table->integer('price');
             $table->integer('quantity');
+            $table->boolean('available')->default(true);
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users_inventory');
+        Schema::dropIfExists('fish');
     }
 };

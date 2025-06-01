@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersInventoryController;
+use App\Http\Controllers\FishController;
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,11 +35,22 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//usersInventory Controllers
+//Fish Controllers
 Route::middleware(['auth'])->group(function () {
-    Route::get('/user/dashboard', [UsersInventoryController::class, 'index'])->name('user.index');
-    Route::get('/user/create', [UsersInventoryController::class, 'create'])->name('user.create');
-    Route::post('/user/store', [UsersInventoryController::class, 'store'])->name('user.store');
+    Route::get('/user/dashboard', [FishController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/user/create', [FishController::class, 'create'])->name('user.create');
+    Route::post('user/create', [FishController::class, 'store'])->name('user.store');
+    Route::get('user/{id}/edit', [FishController::class, 'edit'])->name('user.edit');
+    Route::put('/user/{id}', [FishController::class, 'update'])->name('user.update');
+    Route::delete('/user/myfish{id}', [FishController::class, 'destroy'])->name('user.destroy');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/user/myfish', [FishController::class, 'index'])->name('user.myfish');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/user/mybooking', [BookingController::class, 'index'])->name('user.mybooking');
 });
 
 require __DIR__ . '/auth.php';
