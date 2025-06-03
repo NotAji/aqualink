@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Mange Bookings') }}
+            {{ __('Manage Bookings') }}
         </h2>
     </x-slot>
 
@@ -13,19 +13,29 @@
             <table class="table-fixed text-left text-slate-200 border-separate border-spacing-8 text-xl pl-5 pr-5">
                 <thead>
                   <tr>
+                    <th>Seller</th>
                     <th>Fish</th>
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Status</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody class="text-center">
                     @foreach ($bookings as $book)
                   <tr>
-                    <td>{{ $book->name }}</td>
-                    <td>{{ $book->price }}</td>
+                    <td>{{ $book->seller_name }}</td>
+                    <td>{{ $book->fish->name }}</td>
+                    <td>{{ $book->fish->price }}</td>
                     <td>{{ $book->quantity}}</td>
-                    <td>{{ $book->updated_at}}</td>
+                    <td>{{ $book->status}}</td>
+                    <td>
+                      <form action= {{ Route('user.destroyBooking', $book->id) }} Method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="bg-red-700 p-1 pl-3 pr-3 rounded-lg -ml-3">Cancel</button>
+                      </form>
+                    </td>
                   </tr>   
                   @endforeach                            
                 </tbody>

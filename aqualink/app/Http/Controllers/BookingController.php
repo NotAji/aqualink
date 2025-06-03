@@ -13,7 +13,9 @@ class BookingController extends Controller
     //
     public function index()
     {
-        $bookings = Booking::all();
+        $bookings = booking::with('fish.user')
+            ->where('users_id', auth::user()->id)
+            ->get();
 
         return view("user.mybooking", compact('bookings'));
     }
@@ -33,29 +35,26 @@ class BookingController extends Controller
         ]);
 
         $fish = fish::findOrFail($id);
-        $fishDetails = fish::all();
-
-        dd($fishDetails->price);
 
         if ($request->quantity > $fish->quantity) {
             return back()->with('error', 'Not enough fish available');
         }
 
-        $user = fish::find($id);
-        $userID = user::find($user->users_id);
+        $user = user::find($fish->users_id);
 
         booking::create([
-            'name' => $fishDetails->name,
-            'price' => $fishDetails->price,
             'users_id' => auth::user()->id,
             'fish_id' => $id,
+            'fish_name' => $fish->name,
+            'seller_name' => $user?->name,
             'quantity' => $request->quantity,
         ]);
 
         $fish->quantity -= $request->quantity;
         $fish->save();
 
-        return redirect()->route('user.mybooking')->with('success', 'Fish booked');
+
+        return redirect()->route('user.mybooking');
     }
 
     public function browse()
@@ -64,5 +63,18 @@ class BookingController extends Controller
         $sellerID = $booking->pluck('users_id')->unique();
         $sellers = User::whereIn('id', $sellerID)->get()->keyBy('id');
         return view('user.browse', compact('booking', 'sellers'));
+    }
+
+    public function destroyBooking($id)
+    {
+        $destroyBook = booking::find($id);
+        $fish = $destroyBook->fish;
+
+        $fish->quantity += $destroyBook->quantity;
+        $fish->save();
+
+        $destroyBook->delete();
+
+        return redirect()->route('user.mybooking')->with('success', 'Booking Canceled');
     }
 }

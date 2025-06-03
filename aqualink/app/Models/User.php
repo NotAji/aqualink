@@ -51,6 +51,11 @@ class User extends Authenticatable
     {
         return $this->hasmany(fish::class);
     }
+
+    public function belongFish()
+    {
+        return $this->belongsTo(fish::class);
+    }
     public function booking()
     {
         return $this->hasmany(booking::class);

@@ -8,7 +8,7 @@ class booking extends Model
 {
     //
     protected $table = 'booking';
-    protected $fillable = ['users_id', 'fish_id', 'quantity', 'status', 'notes'];
+    protected $fillable = ['users_id', 'fish_id', 'fish_name', 'seller_name', 'quantity', 'status', 'notes'];
 
     public function user()
     {
@@ -16,6 +16,6 @@ class booking extends Model
     }
     public function fish()
     {
-        return $this->belongsTo(Fish::class);
+        return $this->belongsTo(Fish::class, 'fish_id');
     }
 }

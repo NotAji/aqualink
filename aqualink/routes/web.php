@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FishController;
 use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Auth;
@@ -23,9 +24,9 @@ Route::get('/user/dashboard', function () {
     return view('user.dashboard');
 })->middleware(['auth', 'verified'])->name('user');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('admin');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+});
 
 //profile controllers
 Route::middleware('auth')->group(function () {
@@ -51,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/mybooking', [BookingController::class, 'index'])->name('user.mybooking');
     Route::get('/user/{id}/bookFish', [BookingController::class, 'bookFish'])->name('user.bookFish');
     Route::post('/user/{id}/storeBooking', [BookingController::class, 'storeBooking'])->name('user.storeBooking');
+    Route::delete('/user/mybooking{id}', [BookingController::class, 'destroyBooking'])->name('user.destroyBooking');
 });
 
 require __DIR__ . '/auth.php';
