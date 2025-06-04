@@ -27,4 +27,16 @@ class AdminController extends Controller
         $sellers = User::whereIn('id', $sellerID)->get()->keyBy('id');
         return view('admin.browse', compact('booking', 'sellers'));
     }
+
+    public function userManagement()
+    {
+
+        return view('admin.user-management');
+    }
+
+    public function reports()
+    {
+
+        return view('admin.reports');
+    }
 }

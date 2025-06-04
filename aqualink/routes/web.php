@@ -28,6 +28,8 @@ Route::get('/user/dashboard', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/browse', [AdminController::class, 'browse'])->name('admin.browse');
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/user-management', [AdminController::class, 'userManagement'])->name('admin.user-management');
+    Route::get('/admin/reports', [AdminController::class, 'reports'])->name('admin.reports');
 });
 
 //profile controllers
