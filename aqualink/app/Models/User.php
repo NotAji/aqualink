@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function fish()
     {
-        return $this->hasmany(fish::class);
+        return $this->hasmany(fish::class, 'users_id');
     }
 
     public function belongFish()
@@ -58,6 +58,6 @@ class User extends Authenticatable
     }
     public function booking()
     {
-        return $this->hasmany(booking::class);
+        return $this->hasmany(booking::class, 'users_id');
     }
 }

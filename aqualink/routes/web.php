@@ -24,7 +24,9 @@ Route::get('/user/dashboard', function () {
     return view('user.dashboard');
 })->middleware(['auth', 'verified'])->name('user');
 
+//Admin Controllers
 Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/browse', [AdminController::class, 'browse'])->name('admin.browse');
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 });
 
