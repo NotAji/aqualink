@@ -31,8 +31,9 @@ class AdminController extends Controller
 
     public function userManagement()
     {
+        $users = user::where('role', '!=', 'admin')->get();
 
-        return view('admin.user-management');
+        return view('admin.user-management', compact('users'));
     }
 
     public function reports()
@@ -40,5 +41,24 @@ class AdminController extends Controller
         $reports = reports::all();
 
         return view('admin.reports', compact('reports'));
+    }
+
+    public function removeFishOnReports($id)
+    {
+        $fish = fish::find($id);
+
+        $fish->delete();
+
+        return redirect()->route('admin.reports');
+    }
+
+    public function removeUser($id)
+    {
+
+        $user = user::find($id);
+
+        $user->delete();
+
+        return redirect()->route('admin.user-management');
     }
 }

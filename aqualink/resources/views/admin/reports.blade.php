@@ -7,7 +7,7 @@
 
     <div class="container display flex flex-col justify-center my-10 bg-slate-700 min-h-48 h-fit rounded-2xl w-fit">
         <div class="content-header">
-            <h1 class="">Fish List</h1>
+            <h1 class="">Reported Fish</h1>
         </div>
         <div class="content">
             <table class="table-fixed text-left text-slate-200 border-separate border-spacing-8 text-xl pl-5 pr-5">
@@ -27,7 +27,11 @@
                     <td>{{ $report->fish_id }}</td>
                     <td>{{ $report->sellerName}}</td>
                     <td>{{ $report->fishName }}</td>
-                    <td><a href="" class="bg-red-700 p-2 pl-4 pr-4 rounded-lg">Remove</a></td>
+                    <td><form action={{ Route('admin.remove-reports', ['id' => $report->fish_id]) }} method="POST">
+                       @csrf
+                       @method('DELETE')
+                       <button type="submit" class="bg-red-700 p-1 pl-4 pr-4 rounded-lg">Remove</button> 
+                    </form></td>
                   </tr>   
                   @endforeach                            
                 </tbody>
