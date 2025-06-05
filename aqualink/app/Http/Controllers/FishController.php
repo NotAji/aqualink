@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Fish;
 use App\Models\User;
+use App\Models\Reports;
 use Illuminate\Support\Facades\Auth;
 
 class FishController extends Controller
@@ -74,5 +75,24 @@ class FishController extends Controller
         $fish->delete();
 
         return redirect()->route('user.myfish')->with('success', 'Fish deleted');
+    }
+
+    public function reportFish($id)
+    {
+
+        $fish = fish::find($id);
+
+        $existing = reports::where('fish_id', $fish->id)->get();
+
+
+
+        reports::create([
+            'users_id' => 2,
+            'fish_id' => $fish->id,
+            'sellerName' => 'ajin',
+            'fishName' => $fish->name
+        ]);
+
+        return response()->json(['message', 'Reported Sucessfully']);
     }
 }

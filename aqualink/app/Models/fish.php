@@ -16,4 +16,8 @@ class fish extends Model
     {
         return $this->hasmany(Booking::class);
     }
+    public function reports()
+    {
+        return $this->hasMany(reports::class);
+    }
 }

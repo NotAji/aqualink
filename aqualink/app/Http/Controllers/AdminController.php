@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Fish;
 use App\Models\User;
+use App\Models\Reports;
 use App\Models\Booking;
 
 class AdminController extends Controller
@@ -36,7 +37,8 @@ class AdminController extends Controller
 
     public function reports()
     {
+        $reports = reports::all();
 
-        return view('admin.reports');
+        return view('admin.reports', compact('reports'));
     }
 }

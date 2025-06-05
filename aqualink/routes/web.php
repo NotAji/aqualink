@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user/{id}/edit', [FishController::class, 'edit'])->name('user.edit');
     Route::put('/user/{id}', [FishController::class, 'update'])->name('user.update');
     Route::delete('/user/myfish{id}', [FishController::class, 'destroy'])->name('user.destroy');
+    Route::post('/user/report{id}', [FishController::class, 'reportFish'])->name('user.report');
 });
 
 //Booking Controllers
