@@ -39,6 +39,9 @@
                   </tr>   
                   @endforeach                            
                 </tbody>
+                <div class="page">
+                  {{ $bookings->appends(['bookingPage' => request('bookingPage')])->links() }}
+                </div>
               </table>
         </div>
     </div>
@@ -80,6 +83,9 @@
                   </tr>   
                   @endforeach                            
                 </tbody>
+                <div class="page">
+                  {{ $buyers->appends(['buyerPage' => request('buyerPage')])->links() }}
+                </div>
               </table>
         </div>
     </div>

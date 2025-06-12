@@ -33,6 +33,9 @@
                   </tr>   
                     @endforeach                        
                 </tbody>
+                <div class="page">
+                  {{ $users->appends(['dashboardPage' => request('dashboardPage')])->links() }}
+                </div>
               </table>
         </div>
     </div>

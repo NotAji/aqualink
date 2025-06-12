@@ -16,7 +16,7 @@ class AdminController extends Controller
     {
         $users = user::withCount(['fish', 'booking'])
             ->where('role', '!=', 'admin')
-            ->get();
+            ->paginate(5, ['*'], 'dashboardPage');
 
         return view("admin.dashboard", compact('users'));
     }
@@ -38,7 +38,7 @@ class AdminController extends Controller
 
     public function reports()
     {
-        $reports = reports::all();
+        $reports = reports::paginate(5);
 
         return view('admin.reports', compact('reports'));
     }

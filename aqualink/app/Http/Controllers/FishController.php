@@ -14,14 +14,14 @@ class FishController extends Controller
     //
     public function index()
     {
-        $fishes = Fish::where('users_id', Auth::user()->id)->get();
+        $fishes = Fish::where('users_id', Auth::user()->id)->paginate(5);
         $username = auth::user()->name;
         return view("user.myfish", compact("fishes", "username"));
     }
 
     public function dashboard()
     {
-        $fishes = Fish::where('users_id', Auth::user()->id)->get();
+        $fishes = Fish::where('users_id', Auth::user()->id)->paginate(5);
         $username = auth::user()->name;
 
         $fishBooked = booking::where('users_id', auth::user()->id)->where('status', 'approved')->count();

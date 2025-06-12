@@ -15,9 +15,9 @@ class BookingController extends Controller
     {
         $bookings = booking::with('fish.user')
             ->where('users_id', auth::user()->id)
-            ->get();
+            ->paginate(5, ['*'], 'bookingPage');
 
-        $buyers = booking::with(['user', 'fish'])->where('seller_name', auth::user()->name)->where('status', 'pending')->get();
+        $buyers = booking::with(['user', 'fish'])->where('seller_name', auth::user()->name)->where('status', 'pending')->paginate(5, ['*'], 'buyerPage');
 
         return view("user.mybooking", compact('bookings', 'buyers'));
     }
@@ -61,7 +61,7 @@ class BookingController extends Controller
 
     public function browse()
     {
-        $booking = fish::where('users_id', '!=', auth::user()->id)->get();
+        $booking = fish::where('users_id', '!=', auth::user()->id)->paginate(5);
         $sellerID = $booking->pluck('users_id')->unique();
         $sellers = User::whereIn('id', $sellerID)->get()->keyBy('id');
         return view('user.browse', compact('booking', 'sellers'));

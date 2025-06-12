@@ -37,6 +37,9 @@
                   </tr>   
                   @endforeach                            
                 </tbody>
+                <div class="page">
+                  {{ $booking->links() }}
+                </div>
               </table>
         </div>
     </div>
