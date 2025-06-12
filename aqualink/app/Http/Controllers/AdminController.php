@@ -18,7 +18,11 @@ class AdminController extends Controller
             ->where('role', '!=', 'admin')
             ->paginate(5, ['*'], 'dashboardPage');
 
-        return view("admin.dashboard", compact('users'));
+        $totalFish = fish::count();
+        $totalBookings = booking::count();
+        $totalUsers = user::where('role', '!=', 'admin')->count();
+
+        return view("admin.dashboard", compact('users', 'totalFish', 'totalBookings', 'totalUsers'));
     }
 
     public function browse()

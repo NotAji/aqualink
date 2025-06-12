@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="container display flex flex-col justify-center my-10 bg-slate-700 min-h-48 h-fit rounded-2xl w-fit">
+    <div class="container display flex flex-col justify-center my-10 bg-gray-800 min-h-48 h-fit rounded-2xl w-fit">
         <div class="content-header">
             <h1 class="">Users</h1>
         </div>
@@ -38,6 +38,25 @@
                 </div>
               </table>
         </div>
+    </div>
+
+    <div class="Container">
+      <div class="content flex align-items-center">
+        <div class="cards text-white flex justify-center flex gap-3 align-items-center">
+          <div class="fishes flex justify-center align-items-center text-2xl bg-gray-800 p-5 rounded-xl">
+            <h1>Total Fishes</h1>
+            <h1>{{ $totalFish }}</h1>
+          </div>
+          <div class="bookingReq flex justify-center align-items-center text-2xl bg-gray-800 p-5 rounded-xl">
+            <h1>Total Bookings</h1>
+            <h1>{{ $totalBookings }}</h1>
+          </div>
+          <div class="bookingPen flex justify-center align-items-center text-2xl bg-gray-800 p-5 rounded-xl">
+            <h1>Total Users</h1>
+            <h1>{{ $totalUsers }}</h1>
+          </div>
+        </div>
+      </div>
     </div>
 
 </x-app-layout>
