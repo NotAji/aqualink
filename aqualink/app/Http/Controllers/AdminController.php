@@ -65,4 +65,11 @@ class AdminController extends Controller
 
         return redirect()->route('admin.user-management');
     }
+
+    public function removeFish($id)
+    {
+        $removeFish = fish::find($id);
+        $removeFish->delete();
+        return redirect()->route('admin.browse');
+    }
 }

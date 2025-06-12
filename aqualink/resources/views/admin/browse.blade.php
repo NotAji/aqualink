@@ -19,6 +19,7 @@
                     <th>Quantity</th>
                     <th>Created at</th>
                     <th>Updated at</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody class="text-center">
@@ -30,6 +31,11 @@
                     <td>{{ $book->quantity}}</td>
                     <td>{{ $book->created_at }}</td>
                     <td>{{ $book->updated_at }}</td>
+                    <td><form action= {{ Route('admin.removeFish', $book->id) }} method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="bg-red-600 p-1 pl-2 pr-2 rounded-lg">Remove</button>  
+                    </form></td>
                   </tr>   
                   @endforeach
                 </tbody>

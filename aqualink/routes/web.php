@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/reports', [AdminController::class, 'reports'])->name('admin.reports');
     Route::delete('/admin/user-management-delete{id}', [AdminController::class, 'removeUser'])->name('admin.remove-user');
     Route::delete('/admin/remove-reports{id}', [AdminController::class, 'removeFishOnReports'])->name('admin.remove-reports');
+    Route::delete('/admin/browse/{id}', [AdminController::class, 'removeFish'])->name('admin.removeFish');
 });
 
 //profile controllers
