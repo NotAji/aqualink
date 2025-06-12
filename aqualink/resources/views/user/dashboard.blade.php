@@ -5,7 +5,25 @@
         </h2>
     </x-slot>
 
-    <div class="container display flex flex-col justify-center my-10 bg-slate-700 min-h-48 h-fit rounded-2xl w-fit">
+    <div class="Container">
+      <div class="content flex align-items-center">
+        <div class="cards text-white flex justify-center flex gap-3 max-h-48 align-items-center">
+          <div class="fishes flex justify-center align-items-center text-2xl bg-gray-800 max-w-96 p-5 rounded-xl h-36 w-96">
+            <h1>Fishes you booked</h1>
+            <h1>0</h1>
+          </div>
+          <div class="bookingReq flex justify-center align-items-center text-2xl bg-gray-800 max-w-96 p-5 rounded-xl h-36 w-96">
+            <h1>Booking requests for your fish</h1>
+            <h1>0</h1>
+          </div>
+          <div class="bookingPen flex justify-center align-items-center text-2xl bg-gray-800 max-w-96 p-5 rounded-xl h-36 w-96">
+            <h1>Bookings awaiting approval</h1>
+            <h1>0</h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="container display flex flex-col justify-center my-5 bg-gray-800 min-h-48 h-fit rounded-xl w-fit">
         <div class="content-header">
             <h1 class="">{{ $username }}'s Inventory</h1>
         </div>
@@ -31,6 +49,8 @@
                 </tbody>
               </table>
         </div>
+      </div>
     </div>
+  
 
 </x-app-layout>
