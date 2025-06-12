@@ -14,7 +14,6 @@
             <table class="table-fixed text-left text-slate-200 border-separate border-spacing-8 text-xl pl-5 pr-5">
                 <thead>
                   <tr>
-                    <th>User ID</th>
                     <th>Fish</th>
                     <th>Price</th>
                     <th>Quantity</th>
@@ -25,7 +24,6 @@
                 <tbody class="text-center">
                     @foreach ($fishes as $fish)
                   <tr>
-                    <td>{{ $fish->users_id}}</td>
                     <td>{{ $fish->name }}</td>
                     <td>{{ $fish->price }}</td>
                     <td>{{ $fish->quantity}}</td>

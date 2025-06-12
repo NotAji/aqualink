@@ -9,16 +9,16 @@
       <div class="content flex align-items-center">
         <div class="cards text-white flex justify-center flex gap-3 align-items-center">
           <div class="fishes flex justify-center align-items-center text-2xl bg-gray-800 p-5 rounded-xl">
-            <h1>Fishes you booked</h1>
-            <h1>0</h1>
+            <h1>Approved Bookings</h1>
+            <h1>{{ $fishBooked }}</h1>
           </div>
           <div class="bookingReq flex justify-center align-items-center text-2xl bg-gray-800 p-5 rounded-xl">
             <h1>Booking requests for your fish</h1>
-            <h1>0</h1>
+            <h1>{{ $bookingCount }}</h1>
           </div>
           <div class="bookingPen flex justify-center align-items-center text-2xl bg-gray-800 p-5 rounded-xl">
             <h1>Bookings awaiting approval</h1>
-            <h1>0</h1>
+            <h1>{{ $waitingApproval }}</h1>
           </div>
         </div>
       </div>

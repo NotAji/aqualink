@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FishController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +61,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/{id}/bookFish', [BookingController::class, 'bookFish'])->name('user.bookFish');
     Route::post('/user/{id}/storeBooking', [BookingController::class, 'storeBooking'])->name('user.storeBooking');
     Route::delete('/user/mybooking{id}', [BookingController::class, 'destroyBooking'])->name('user.destroyBooking');
+    Route::put('/user/mybooking/{id}/decline', [BookingController::class, 'declineBooking'])->name('user.declineBooking');
+    Route::put('/user/mybooking/{id}/approve', [BookingController::class, 'approveBooking'])->name('user.approveBooking');
 });
 
 require __DIR__ . '/auth.php';

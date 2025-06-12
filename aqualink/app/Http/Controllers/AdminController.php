@@ -23,7 +23,7 @@ class AdminController extends Controller
 
     public function browse()
     {
-        $booking = fish::where('users_id', '!=', auth::user()->id)->get();
+        $booking = fish::where('users_id', '!=', auth::user()->id)->paginate(5);
         $sellerID = $booking->pluck('users_id')->unique();
         $sellers = User::whereIn('id', $sellerID)->get()->keyBy('id');
         return view('admin.browse', compact('booking', 'sellers'));
@@ -31,7 +31,7 @@ class AdminController extends Controller
 
     public function userManagement()
     {
-        $users = user::where('role', '!=', 'admin')->get();
+        $users = user::where('role', '!=', 'admin')->paginate(5);
 
         return view('admin.user-management', compact('users'));
     }

@@ -31,9 +31,12 @@
                     <td>{{ $book->created_at }}</td>
                     <td>{{ $book->updated_at }}</td>
                   </tr>   
-                  @endforeach                            
+                  @endforeach
                 </tbody>
               </table>
+              <div class="page">
+                {{ $booking->links() }}
+              </div>
         </div>
     </div>
 

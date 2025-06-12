@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Fish;
 use App\Models\User;
+use App\Models\Booking;
 use App\Models\Reports;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,12 @@ class FishController extends Controller
     {
         $fishes = Fish::where('users_id', Auth::user()->id)->get();
         $username = auth::user()->name;
-        return view("user.dashboard", compact("fishes", "username"));
+
+        $fishBooked = booking::where('users_id', auth::user()->id)->where('status', 'approved')->count();
+        $waitingApproval = booking::where('users_id', auth::user()->id)->where('status', 'pending')->count();
+        $bookingCount = booking::where('seller_name', auth::user()->name)->where('status', 'pending')->count();
+
+        return view("user.dashboard", compact("fishes", "username", 'fishBooked', 'bookingCount', 'waitingApproval'));
     }
 
     public function create()

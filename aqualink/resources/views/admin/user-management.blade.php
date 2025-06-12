@@ -36,6 +36,9 @@
                   </tr>   
                     @endforeach                        
                 </tbody>
+                <div class="page">
+                  {{ $users->links() }}
+                </div>
               </table>
         </div>
     </div>

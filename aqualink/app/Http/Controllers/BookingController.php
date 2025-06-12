@@ -17,7 +17,9 @@ class BookingController extends Controller
             ->where('users_id', auth::user()->id)
             ->get();
 
-        return view("user.mybooking", compact('bookings'));
+        $buyers = booking::with(['user', 'fish'])->where('seller_name', auth::user()->name)->where('status', 'pending')->get();
+
+        return view("user.mybooking", compact('bookings', 'buyers'));
     }
 
     public function bookFish($id)
@@ -76,5 +78,23 @@ class BookingController extends Controller
         $destroyBook->delete();
 
         return redirect()->route('user.mybooking')->with('success', 'Booking Canceled');
+    }
+
+    public function declineBooking($id)
+    {
+        $declined = booking::findOrFail($id);
+        $declined->status = 'declined';
+        $declined->save();
+
+        return redirect()->route('user.mybooking');
+    }
+
+    public function approveBooking($id)
+    {
+        $approved = booking::findOrFail($id);
+        $approved->status = 'approved';
+        $approved->save();
+
+        return redirect()->route('user.mybooking');
     }
 }
