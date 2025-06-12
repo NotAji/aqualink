@@ -127,12 +127,22 @@ footer {
 }
 
 .Container {
+    min-width: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: all 1.5s ease;
+}
+.Container .content .cards {
+    padding-top: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    transition: all 1.5s ease;
 }
 .Container .content .cards .fishes {
+    height: 8rem;
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -140,6 +150,8 @@ footer {
     font-size: 1.6rem;
 }
 .Container .content .cards .bookingReq {
+    height: 8rem;
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -147,6 +159,8 @@ footer {
     font-size: 1.6rem;
 }
 .Container .content .cards .bookingPen {
+    height: 8rem;
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;

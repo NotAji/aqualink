@@ -29,7 +29,7 @@
                     <td>{{ $book->price }}</td>
                     <td>{{ $book->quantity}}</td>
                     <td>{{ $book->available ? 'Available' : 'Unavailable'}}</td>
-                    <td><a href={{ Route('user.bookFish', $book->id) }} class="bg-cyan-900 p-2 pl-4 pr-4 rounded-lg">Book Fish</a></td>
+                    <td><a href={{ Route('user.bookFish', $book->id) }} class="bg-cyan-900 p-2 pl-4 pr-4 rounded-lg">Book</a></td>
                     <td><form action={{ Route('user.report', $book->id)}} Method='POST'>
                       @csrf
                       <button type="submit" class="bg-red-700 p-1 pl-4 pr-4 rounded-lg -ml-5">Report</button>
