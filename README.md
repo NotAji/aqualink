@@ -16,3 +16,7 @@
 4. Run the command nmp run dev
 5. Open a new terminal and run php artisan serve
 6. Ctrl + click the localserver host
+
+## link to video here
+
+link: https://youtu.be/YLe4Ir3E1bE
