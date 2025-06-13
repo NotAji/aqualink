@@ -86,19 +86,19 @@ class FishController extends Controller
     public function reportFish($id)
     {
 
-        $fish = fish::find($id);
+        $fish = fish::with('booking')->find($id);
+        $booking = $fish->booking->first();
 
         $existing = reports::where('fish_id', $fish->id)->get();
 
 
-
         reports::create([
-            'users_id' => 2,
+            'users_id' => $fish->users_id,
             'fish_id' => $fish->id,
-            'sellerName' => 'ajin',
+            'sellerName' => $booking->seller_name,
             'fishName' => $fish->name
         ]);
 
-        return response()->json(['message', 'Reported Sucessfully']);
+        return redirect()->route('user.browse');
     }
 }
